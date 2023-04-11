@@ -1,12 +1,16 @@
 # **useCallback** hook
 
-The **useCallback** hook is a built-in hook in React that is used to optimize the performance of components by memoizing functions.
+The **useCallback** hook is a built-in hook in React that optimizes component performance by memoizing functions.
 
-In React, when a parent component renders, it can trigger the re-rendering of all of its child components, even if the child components don't actually need to be re-rendered. This can result in unnecessary re-renders and a degradation of performance.
+When a parent component re-renders, it can trigger the re-rendering of all its child components, even those that don't need to be re-rendered. This results in unnecessary re-renders and degraded performance.
 
-To prevent this, **useCallback** can be used to memoize functions and only re-render the child component when the props or state that the function depends on changes.
+It's important to understand that, although two functions may appear to be the same, they may not have referential equality in memory. When React re-renders a component, it recreates functions, even if they share the same name, look the same, and have the same definition.
 
-Here is an example of how to use **useCallback**:
+This is where the **useCallback** hook comes in. It allows us to memoize functions and avoid unnecessary re-creation, improving React component performance.
+
+Furthermore, **useCallback** returns a memoized function and not the function call. You can use this memoized function later on in your code.
+
+Here's an example of how to use **useCallback**:
 
 ```jsx
 import { useCallback, useState } from "react";
@@ -27,6 +31,6 @@ function MyComponent() {
 }
 ```
 
-In this example, **handleClick** is memoized using **useCallback** so that it will only be recreated when **count** changes. The empty array **[]** passed as the second argument to **useCallback** indicates that there are no dependencies for the function, so it will only be created once when the component is initially rendered.
+In this example, **handleClick** is memoized using **useCallback**. It will only be recreated when **count** changes. The empty array **[]** passed as the second argument to **useCallback** indicates that the function has no dependencies and will only be created once during the initial render.
 
 By using **useCallback**, we can avoid unnecessary re-renders and improve the performance of our React components.
