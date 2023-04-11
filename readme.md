@@ -1,5 +1,7 @@
 # **useCallback** hook
 
+**useCallback(fn, dependencies)**
+
 The **useCallback** hook is a built-in hook in React that optimizes component performance by memoizing functions.
 
 When a parent component re-renders, it can trigger the re-rendering of all its child components, even those that don't need to be re-rendered. This results in unnecessary re-renders and degraded performance.
